@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+env:
+  APP_NAME: double
+  DOCKER_COMPOSE_PATH: double
+
 jobs:
   # Step 1: Build the Docker image
   build:
@@ -27,15 +31,15 @@ jobs:
           username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
           password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
-      # Build and push the Docker image using docker/build-push-action
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: docker/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKER_REGISTRY_URL }}/${{ env.APP_NAME }}:latest
-          load: false # Ensure the image is not loaded into the runner
+      # Build the Docker image
+      - name: Build and tag Docker image
+        run: |
+          docker build --pull -f docker/Dockerfile -t ${{ secrets.DOCKER_REGISTRY_URL }}/${{ env.APP_NAME }}:latest .
+
+      # Push Docker image to registry
+      - name: Push Docker image to registry
+        run: |
+          docker push ${{ secrets.DOCKER_REGISTRY_URL }}/${{ env.APP_NAME }}:latest
 
   # Step 2: Deploy the Docker image (depends on the build step)
   deploy:
