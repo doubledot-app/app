@@ -56,7 +56,10 @@ jobs:
           password: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            docker login ${{ secrets.DOCKER_REGISTRY_URL }} -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+            docker login ${{ secrets.DOCKER_REGISTRY_URL }} <<EOF
+            -u ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+            -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+            EOF
             cd ${{ env.DOCKER_COMPOSE_PATH }}
             docker compose pull
             docker compose up -d --remove-orphans --force-recreate
