@@ -1,6 +1,6 @@
-import WebApp from '@twa-dev/sdk';
-import { AppRoot } from '@telegram-apps/telegram-ui';
-import { type FC, useEffect } from 'react';
+import WebApp from "@twa-dev/sdk"
+import { AppRoot } from "@telegram-apps/telegram-ui"
+import { type FC, useEffect } from "react"
 import {
   Navigate,
   Route,
@@ -8,45 +8,50 @@ import {
   Routes,
   useLocation,
   useNavigate,
-} from 'react-router-dom';
+} from "react-router-dom"
 
-import { routes } from '@/navigation/routes.tsx';
+import { routes } from "@/navigation/routes.tsx"
+import { InitDataPage } from "@/pages/InitDataPage/InitDataPage"
 
 function BackButtonManipulator() {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     function onClick() {
-      navigate(-1);
+      navigate(-1)
     }
-    WebApp.BackButton.onClick(onClick);
+    WebApp.BackButton.onClick(onClick)
 
-    return () => WebApp.BackButton.offClick(onClick);
-  }, [navigate]);
+    return () => WebApp.BackButton.offClick(onClick)
+  }, [navigate])
 
   useEffect(() => {
-    if (location.pathname === '/') {
-      WebApp.BackButton.isVisible && WebApp.BackButton.hide();
+    if (location.pathname === "/") {
+      WebApp.BackButton.isVisible && WebApp.BackButton.hide()
     } else {
-      !WebApp.BackButton.isVisible && WebApp.BackButton.show();
+      !WebApp.BackButton.isVisible && WebApp.BackButton.show()
     }
-  }, [location]);
+  }, [location])
 
-  return null;
+  return null
 }
+console.log(WebApp, "WebApp")
 
 export const App: FC = () => (
   <AppRoot
     appearance={WebApp.colorScheme}
-    platform={['macos', 'ios'].includes(WebApp.platform) ? 'ios' : 'base'}
+    platform={["macos", "ios"].includes(WebApp.platform) ? "ios" : "base"}
   >
     <BrowserRouter>
-      <BackButtonManipulator/>
+      <BackButtonManipulator />
+      <InitDataPage />
       <Routes>
-        {routes.map((route) => <Route key={route.path} {...route} />)}
-        <Route path='*' element={<Navigate to='/'/>}/>
+        {routes.map((route) => (
+          <Route key={route.path} {...route} />
+        ))}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   </AppRoot>
-);
+)
