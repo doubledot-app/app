@@ -55,5 +55,5 @@ jobs:
             EOF
             cd ${{ env.DOCKER_COMPOSE_PATH }}
             docker compose pull
-            docker compose down
-            docker compose up -d --force-recreate
+            docker compose up -d --remove-orphans --force-recreate
+            docker system prune -a -f || true
