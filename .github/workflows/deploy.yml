@@ -33,7 +33,7 @@ jobs:
       # Build the Docker image
       - name: Build and tag Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_REGISTRY_URL }}/${{ env.APP_NAME }}:latest .
+          docker build -f docker/Dockerfile -t ${{ secrets.DOCKER_REGISTRY_URL }}/${{ env.APP_NAME }}:latest .
 
       # Push Docker image to registry
       - name: Push Docker image to registry
