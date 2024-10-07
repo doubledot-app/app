@@ -1,10 +1,9 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import ReactDOM from 'react-dom/client';
+import '@twa-dev/sdk';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+import { Root } from '@/components/Root';
+
+import '@telegram-apps/telegram-ui/dist/styles.css';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(<Root/>);
