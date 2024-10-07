@@ -5,6 +5,6 @@ import { Root } from "@/components/Root"
 
 import "@telegram-apps/telegram-ui/dist/styles.css"
 import "./index.css"
-import "./translation/i18n"
+import "./translation/config"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(<Root />)
