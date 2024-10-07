@@ -54,4 +54,5 @@ jobs:
             -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
             EOF
             cd ${{ env.DOCKER_COMPOSE_PATH }}
-            docker compose up -d --pull --force-recreate
+            docker compose pull
+            docker compose up -d --force-recreate
