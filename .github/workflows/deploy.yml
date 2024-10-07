@@ -61,7 +61,7 @@ jobs:
             EOF
             cd double-compose
             docker compose -f docker-compose.${{ env.APP_NAME }}.yml pull
-            docker compose -f docker-compose.${{ env.APP_NAME }}.yml up -d --remove-orphans --force-recreate
+            docker compose -f docker-compose.${{ env.APP_NAME }}.yml up -d --force-recreate
 
   # Step 3: Cleanup (runs after deploy, regardless of success/failure)
   clear:
