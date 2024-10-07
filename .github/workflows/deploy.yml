@@ -7,7 +7,6 @@ on:
 
 env:
   APP_NAME: double
-  DOCKER_COMPOSE_PATH: double
 
 jobs:
   # Step 1: Build the Docker image
@@ -60,9 +59,9 @@ jobs:
             -u ${{ secrets.DOCKER_REGISTRY_USERNAME }}
             -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
             EOF
-            cd ${{ env.DOCKER_COMPOSE_PATH }}
-            docker compose pull
-            docker compose up -d --remove-orphans --force-recreate
+            cd double-compose
+            docker compose -f docker-compose.${{ env.APP_NAME }}.yml pull
+            docker compose -f docker-compose.${{ env.APP_NAME }}.yml up -d --remove-orphans --force-recreate
 
   # Step 3: Cleanup (runs after deploy, regardless of success/failure)
   clear:
