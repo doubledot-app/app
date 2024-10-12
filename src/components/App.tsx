@@ -7,7 +7,7 @@ import {
   BrowserRouter,
   Routes,
   useLocation,
-  useNavigate,
+  useNavigate
 } from "react-router-dom"
 
 import { routes } from "@/navigation/routes.tsx"
@@ -28,15 +28,15 @@ function BackButtonManipulator() {
 
   useEffect(() => {
     if (location.pathname === "/") {
-      WebApp.BackButton.isVisible && WebApp.BackButton.hide()
+      if (WebApp.BackButton.isVisible) WebApp.BackButton.hide()
     } else {
-      !WebApp.BackButton.isVisible && WebApp.BackButton.show()
+      if (!WebApp.BackButton.isVisible) WebApp.BackButton.show()
     }
   }, [location])
 
   return null
 }
-console.log(WebApp, "WebApp")
+console.log(WebApp.initData)
 
 export const App: FC = () => (
   <AppRoot

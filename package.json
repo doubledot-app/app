@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "swagger:gen": "pnpm orval",
+    "swagger:update": "pnpm swagger:core",
+    "swagger:core": "node src/services/swagger/Core/swagger.cjs || true",
+    "swagger": "pnpm swagger:update && pnpm swagger:gen"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.59.0",
@@ -15,8 +19,10 @@
     "@tonconnect/ui-react": "^2.0.9",
     "@twa-dev/sdk": "^7.10.1",
     "@twa-dev/types": "^7.10.0",
+    "axios": "^1.7.7",
     "eruda": "^3.4.0",
     "i18next": "^23.15.2",
+    "lodash.merge": "^4.6.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-i18next": "^15.0.2",
@@ -24,6 +30,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
+    "@types/lodash.merge": "^4.6.9",
     "@types/react": "^18.3.10",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -31,6 +38,7 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.12",
     "globals": "^15.9.0",
+    "orval": "^7.1.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.7.0",
     "vite": "^5.4.8",
