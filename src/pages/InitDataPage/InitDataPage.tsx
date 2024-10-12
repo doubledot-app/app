@@ -61,18 +61,14 @@ export const InitDataPage: FC = () => {
       { title: "query_id", value: query_id },
       { title: "start_param", value: start_param },
       { title: "chat_type", value: chat_type },
-      { title: "chat_instance", value: chat_instance }
+      { title: "chat_instance", value: chat_instance },
+      { title: "authenticate", value: data ? JSON.stringify(data) : "" }
     ]
-  }, [initData, initDataRaw])
+  }, [data, initData, initDataRaw])
 
   const userRows = useMemo<DisplayDataRow[] | undefined>(() => {
-    return initData && initData.user
-      ? [
-          ...getUserRows(initData.user),
-          { title: "authenticate", value: data ? JSON.stringify(data) : "" }
-        ]
-      : undefined
-  }, [data, initData])
+    return initData && initData.user ? getUserRows(initData.user) : undefined
+  }, [initData])
 
   const receiverRows = useMemo<DisplayDataRow[] | undefined>(() => {
     return initData && initData.receiver
