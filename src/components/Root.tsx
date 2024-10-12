@@ -4,6 +4,8 @@ import WebApp from "@twa-dev/sdk"
 
 import { App } from "@/components/App.tsx"
 import { ErrorBoundary } from "@/components/ErrorBoundary.tsx"
+import { QueryClientProvider } from "@tanstack/react-query"
+import { queryClient } from "@/services/configs/query/config"
 
 const ErrorBoundaryError: FC<{ error: unknown }> = ({ error }) => (
   <div>
@@ -35,7 +37,9 @@ const Inner: FC = () => {
 
   return (
     <TonConnectUIProvider manifestUrl={manifestUrl}>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </TonConnectUIProvider>
   )
 }
