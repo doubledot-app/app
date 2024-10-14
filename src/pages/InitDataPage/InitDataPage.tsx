@@ -1,38 +1,41 @@
 import { type FC, useEffect, useMemo } from "react"
 import { List, Placeholder } from "@telegram-apps/telegram-ui"
 import WebApp from "@twa-dev/sdk"
-import type { WebAppUser } from "@twa-dev/types"
+// import type { WebAppUser } from "@twa-dev/types"
 
 import {
   DisplayData,
   type DisplayDataRow
 } from "@/components/DisplayData/DisplayData.tsx"
 import { useAuthControllerTelegram } from "@/services/swagger/Core"
+import { useGeolocated } from "react-geolocated"
 
 // TODO: @twa-dev/sdk is outdated, as well as @twa-dev/types.
-interface ExactWebAppUser extends WebAppUser {
-  allows_write_to_pm?: boolean
-  added_to_attachment_menu?: boolean
-}
+// interface ExactWebAppUser extends WebAppUser {
+//   allows_write_to_pm?: boolean
+//   added_to_attachment_menu?: boolean
+// }
 
-function getUserRows(user: ExactWebAppUser): DisplayDataRow[] {
-  return [
-    { title: "id", value: user.id.toString() },
-    { title: "username", value: user.username },
-    { title: "photo_url", value: user.photo_url },
-    { title: "last_name", value: user.last_name },
-    { title: "first_name", value: user.first_name },
-    { title: "is_bot", value: user.is_bot },
-    { title: "is_premium", value: user.is_premium },
-    { title: "language_code", value: user.language_code },
-    { title: "allows_to_write_to_pm", value: user.allows_write_to_pm },
-    { title: "added_to_attachment_menu", value: user.added_to_attachment_menu }
-  ]
-}
+// function getUserRows(user: ExactWebAppUser): DisplayDataRow[] {
+//   return [
+//     { title: "id", value: user.id.toString() },
+//     { title: "username", value: user.username },
+//     { title: "photo_url", value: user.photo_url },
+//     { title: "last_name", value: user.last_name },
+//     { title: "first_name", value: user.first_name },
+//     { title: "is_bot", value: user.is_bot },
+//     { title: "is_premium", value: user.is_premium },
+//     { title: "language_code", value: user.language_code },
+//     { title: "allows_to_write_to_pm", value: user.allows_write_to_pm },
+//     { title: "added_to_attachment_menu", value: user.added_to_attachment_menu }
+//   ]
+// }
 
 export const InitDataPage: FC = () => {
   const initDataRaw = WebApp.initData
   const initData = WebApp.initDataUnsafe
+
+  const { coords } = useGeolocated()
 
   const { data, mutate: authenticate } = useAuthControllerTelegram()
 
@@ -62,34 +65,46 @@ export const InitDataPage: FC = () => {
       { title: "start_param", value: start_param },
       { title: "chat_type", value: chat_type },
       { title: "chat_instance", value: chat_instance },
-      { title: "authenticate", value: data ? JSON.stringify(data) : "" }
+      { title: "authenticate", value: data ? JSON.stringify(data) : "" },
+      ...(coords
+        ? [
+            {
+              title: "latitude",
+              value: coords.latitude
+            },
+            {
+              title: "longitude",
+              value: coords.longitude
+            }
+          ]
+        : [])
     ]
-  }, [data, initData, initDataRaw])
+  }, [coords, data, initData, initDataRaw])
 
-  const userRows = useMemo<DisplayDataRow[] | undefined>(() => {
-    return initData && initData.user ? getUserRows(initData.user) : undefined
-  }, [initData])
+  // const userRows = useMemo<DisplayDataRow[] | undefined>(() => {
+  //   return initData && initData.user ? getUserRows(initData.user) : undefined
+  // }, [initData])
 
-  const receiverRows = useMemo<DisplayDataRow[] | undefined>(() => {
-    return initData && initData.receiver
-      ? getUserRows(initData.receiver)
-      : undefined
-  }, [initData])
+  // const receiverRows = useMemo<DisplayDataRow[] | undefined>(() => {
+  //   return initData && initData.receiver
+  //     ? getUserRows(initData.receiver)
+  //     : undefined
+  // }, [initData])
 
-  const chatRows = useMemo<DisplayDataRow[] | undefined>(() => {
-    if (!initData?.chat) {
-      return
-    }
-    const { id, title, type, username, photo_url } = initData.chat
+  // const chatRows = useMemo<DisplayDataRow[] | undefined>(() => {
+  //   if (!initData?.chat) {
+  //     return
+  //   }
+  //   const { id, title, type, username, photo_url } = initData.chat
 
-    return [
-      { title: "id", value: id.toString() },
-      { title: "title", value: title },
-      { title: "type", value: type },
-      { title: "username", value: username },
-      { title: "photo_url", value: photo_url }
-    ]
-  }, [initData])
+  //   return [
+  //     { title: "id", value: id.toString() },
+  //     { title: "title", value: title },
+  //     { title: "type", value: type },
+  //     { title: "username", value: username },
+  //     { title: "photo_url", value: photo_url }
+  //   ]
+  // }, [initData])
 
   useEffect(() => {
     if (!initDataRaw) return
@@ -113,9 +128,9 @@ export const InitDataPage: FC = () => {
   return (
     <List>
       <DisplayData header={"Init Data"} rows={initDataRows} />
-      {userRows && <DisplayData header={"User"} rows={userRows} />}
-      {receiverRows && <DisplayData header={"Receiver"} rows={receiverRows} />}
-      {chatRows && <DisplayData header={"Chat"} rows={chatRows} />}
+      {/* {userRows && <DisplayData header={"User"} rows={userRows} />} */}
+      {/* {receiverRows && <DisplayData header={"Receiver"} rows={receiverRows} />} */}
+      {/* {chatRows && <DisplayData header={"Chat"} rows={chatRows} />} */}
     </List>
   )
 }
