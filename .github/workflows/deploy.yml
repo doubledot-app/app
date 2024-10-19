@@ -7,6 +7,7 @@ on:
 
 env:
   APP_NAME: double
+  IMAGE: ${{ secrets.DOCKER_REGISTRY_URL }}/double:latest
 
 jobs:
   # Step 1: Build the Docker image
@@ -33,12 +34,12 @@ jobs:
       # Build the Docker image
       - name: Build and tag Docker image
         run: |
-          docker build --pull -f docker/Dockerfile -t ${{ secrets.DOCKER_REGISTRY_URL }}/${{ env.APP_NAME }}:latest .
+          docker build -f docker/Dockerfile --pull --cache-from ${{ env.IMAGE }} -t ${{ env.IMAGE }} .
 
       # Push Docker image to registry
       - name: Push Docker image to registry
         run: |
-          docker push ${{ secrets.DOCKER_REGISTRY_URL }}/${{ env.APP_NAME }}:latest
+          docker push ${{ env.IMAGE }}
 
   # Step 2: Deploy the Docker image (depends on the build step)
   deploy:
