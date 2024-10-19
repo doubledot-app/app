@@ -80,6 +80,32 @@
           "Auth"
         ]
       }
+    },
+    "/api/v1/user/me": {
+      "get": {
+        "operationId": "UserController_findMe",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
     }
   },
   "info": {
@@ -147,6 +173,53 @@
         },
         "required": [
           "refreshToken"
+        ]
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "default": "ce9d65b5-dbb5-4b66-b368-5dffa5df6217"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "default": "2024-10-19T21:07:54.451Z"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "default": "2024-10-19T21:07:54.451Z"
+          },
+          "deletedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "readOnly": true
+          },
+          "telegramId": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "updatedAt",
+          "name"
         ]
       }
     }

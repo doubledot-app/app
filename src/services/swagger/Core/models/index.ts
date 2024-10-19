@@ -10,3 +10,4 @@ export * from './refreshTokenDto';
 export * from './telegramDto';
 export * from './token';
 export * from './tokenTokenType';
+export * from './user';
