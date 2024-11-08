@@ -8,6 +8,7 @@ import WebApp from '@twa-dev/sdk';
 
 import { BackButtonManipulator } from '@/components/BackButtonManipulator';
 import { NotFound } from '@/components/NotFound';
+import { AuthProvider } from '@/modules/Auth/components/AuthProvider';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -22,10 +23,12 @@ function RootComponent() {
       appearance={WebApp.colorScheme}
       platform={['macos', 'ios'].includes(WebApp.platform) ? 'ios' : 'base'}
     >
-      <Outlet />
-      <BackButtonManipulator />
-      <ReactQueryDevtools buttonPosition='top-right' />
-      <TanStackRouterDevtools position='bottom-right' />
+      <AuthProvider>
+        <Outlet />
+        <BackButtonManipulator />
+        <ReactQueryDevtools buttonPosition='top-right' />
+        <TanStackRouterDevtools position='bottom-right' />
+      </AuthProvider>
     </AppRoot>
   );
 }

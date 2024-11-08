@@ -11,8 +11,6 @@ import ReactDOM from 'react-dom/client';
 import { routeTree } from '@/routeTree.gen';
 import { queryClient } from '@/services/configs/query/config';
 
-import { AuthProvider } from './modules/Auth/components/AuthProvider';
-
 // Set up a Router instance
 const router = createRouter({
   routeTree,
@@ -37,9 +35,7 @@ if (!rootElement.innerHTML) {
   root.render(
     <ErrorBoundary fallback={<p>An error has occurred</p>}>
       <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <RouterProvider router={router} />
-        </AuthProvider>
+        <RouterProvider router={router} />
       </QueryClientProvider>
     </ErrorBoundary>
   );
