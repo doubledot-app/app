@@ -1,14 +1,15 @@
-import i18n, { InitOptions } from "i18next"
-import { initReactI18next } from "react-i18next"
-import root from "./en/root.json"
+import i18n, { InitOptions } from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
-const defaultLng = "en"
-const defaultNS = "root"
-const resources: InitOptions["resources"] = {
+import root from './en/root.json';
+
+const defaultLng = 'en';
+const defaultNS = 'root';
+const resources: InitOptions['resources'] = {
   en: {
-    root,
-  },
-}
+    root
+  }
+};
 
 i18n.use(initReactI18next).init({
   defaultNS,
@@ -16,7 +17,7 @@ i18n.use(initReactI18next).init({
   lng: defaultLng,
   fallbackLng: defaultLng,
   debug: false /* isDev */,
-  interpolation: { escapeValue: false },
-})
+  interpolation: { escapeValue: false }
+});
 
-export default i18n
+export default i18n;

@@ -1,1 +1,1 @@
-export * from "./onFulfilledResponseToken"
+export * from './onFulfilledResponseToken';

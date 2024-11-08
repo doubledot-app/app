@@ -1,2 +1,2 @@
-export * from "./hooks/doubleCore"
-export * from "./models"
+export * from './hooks/doubleCore';
+export * from './models';

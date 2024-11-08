@@ -1,30 +1,30 @@
-import type { AxiosError, AxiosRequestConfig } from "axios"
+import type { AxiosError, AxiosRequestConfig } from 'axios';
 
-import axios from "axios"
+import axios from 'axios';
 
-import { AxiosClient } from "@/services/configs/axios/client"
-import { env } from "@/utils/env"
+import { AxiosClient } from '@/services/configs/axios/client';
+import { env } from '@/utils/env';
 
 const coreClient = new AxiosClient({
   baseURL: env.api.coreUrl
-})
+});
 
 export function coreMutator<T>(
   config: AxiosRequestConfig,
   options?: AxiosRequestConfig
 ): Promise<T> {
-  const source = axios.CancelToken.source()
+  const source = axios.CancelToken.source();
 
   const combinedConfig = {
     ...config,
     ...options,
     cancelToken: source.token
-  }
+  };
 
   const promise: any = coreClient
     .adaptor(combinedConfig)
-    .then((response) => {
-      return response.data
+    .then(response => {
+      return response.data;
     })
     .catch((error: AxiosError) => {
       // const responseError: any = error?.response?.data
@@ -41,14 +41,14 @@ export function coreMutator<T>(
       // }
 
       // console.error("🐍 ~ coreMutator:", error)
-      throw error
-    })
+      throw error;
+    });
 
   promise.cancel = () => {
-    source.cancel("Query was cancelled")
-  }
+    source.cancel('Query was cancelled');
+  };
 
-  return promise
+  return promise;
 }
 
-export type ErrorType<Error> = AxiosError<Error>
+export type ErrorType<Error> = AxiosError<Error>;

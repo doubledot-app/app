@@ -45,9 +45,7 @@
             }
           }
         },
-        "tags": [
-          "Auth"
-        ]
+        "tags": ["Auth"]
       }
     },
     "/api/v1/auth/refresh-token": {
@@ -76,9 +74,7 @@
             }
           }
         },
-        "tags": [
-          "Auth"
-        ]
+        "tags": ["Auth"]
       }
     },
     "/api/v1/user/me": {
@@ -97,9 +93,7 @@
             }
           }
         },
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "security": [
           {
             "bearer": []
@@ -132,9 +126,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "initDataRaw"
-        ]
+        "required": ["initDataRaw"]
       },
       "Token": {
         "type": "object",
@@ -171,9 +163,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "refreshToken"
-        ]
+        "required": ["refreshToken"]
       },
       "User": {
         "type": "object",
@@ -215,12 +205,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "id",
-          "createdAt",
-          "updatedAt",
-          "name"
-        ]
+        "required": ["id", "createdAt", "updatedAt", "name"]
       }
     }
   }

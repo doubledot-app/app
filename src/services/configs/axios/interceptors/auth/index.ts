@@ -1,2 +1,2 @@
-export {requestAuth} from './requestAuth';
-export {buildOnRejectedResponseAuth} from './onRejectedResponseAuth';
+export { requestAuth } from './requestAuth';
+export { buildOnRejectedResponseAuth } from './onRejectedResponseAuth';
