@@ -46,9 +46,9 @@ jobs:
     needs: build # Deploy only if build succeeds
     steps:
       # Pull the latest image, and deploy using Docker Compose
-      - name: SSH and deploy to server
+      - name: Deploy to server
         run: |
-          cd infra
+          cd ~/infra
           docker compose -f docker-compose.${{ env.APP_NAME }}.yml pull
           docker compose -f docker-compose.${{ env.APP_NAME }}.yml up -d --force-recreate
 
@@ -62,4 +62,3 @@ jobs:
         run: |
           docker system prune -a -f || true
 
-          
