@@ -6,14 +6,13 @@ on:
       - main
 
 env:
-  APP_NAME: double
-  IMAGE: ${{ secrets.DOCKER_REGISTRY_URL }}/double:latest
+  APP_NAME: app
+  IMAGE: ${{ vars.DOCKER_REGISTRY_URL }}/app:latest
 
 jobs:
   # Step 1: Build the Docker image
   build:
     runs-on: ubuntu-latest
-
     steps:
       # Checkout the code
       - name: Checkout code
@@ -27,7 +26,7 @@ jobs:
       - name: Log in to Docker registry
         uses: docker/login-action@v2
         with:
-          registry: ${{ secrets.DOCKER_REGISTRY_URL }}
+          registry: ${{ vars.DOCKER_REGISTRY_URL }}
           username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
           password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
@@ -43,40 +42,22 @@ jobs:
 
   # Step 2: Deploy the Docker image (depends on the build step)
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build # Deploy only if build succeeds
-
     steps:
-      # SSH into the server, pull the latest image, and deploy using Docker Compose
+      # Pull the latest image, and deploy using Docker Compose
       - name: SSH and deploy to server
-        uses: appleboy/ssh-action@v0.1.9
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            docker login ${{ secrets.DOCKER_REGISTRY_URL }} <<EOF
-            -u ${{ secrets.DOCKER_REGISTRY_USERNAME }}
-            -p ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-            EOF
-            cd double-compose
-            docker compose -f docker-compose.${{ env.APP_NAME }}.yml pull
-            docker compose -f docker-compose.${{ env.APP_NAME }}.yml up -d --force-recreate
+        run: |
+          cd infra
+          docker compose -f docker-compose.${{ env.APP_NAME }}.yml pull
+          docker compose -f docker-compose.${{ env.APP_NAME }}.yml up -d --force-recreate
 
   # Step 3: Cleanup (runs after deploy, regardless of success/failure)
   clear:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: deploy # Clean up after deploy
-
     steps:
-      # SSH into the server and clean up unused images
+      # Clean up unused images
       - name: Clean up Docker resources
-        uses: appleboy/ssh-action@v0.1.9
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            docker system prune -a -f || true
+        run: |
+          docker system prune -a -f || true
