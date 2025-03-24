@@ -1,1 +1,1 @@
-# Seller Frontend 💵
+# DoubleDot. 💵
