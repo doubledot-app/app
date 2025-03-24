@@ -49,6 +49,7 @@ jobs:
       - name: Deploy to server
         run: |
           cd ~/infra
+          git pull
           docker compose -f docker-compose.${{ env.APP_NAME }}.yml pull
           docker compose -f docker-compose.${{ env.APP_NAME }}.yml up -d --force-recreate
 
