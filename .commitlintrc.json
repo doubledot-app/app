@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/commitlintrc.json",
+
+  "extends": ["@commitlint/config-conventional"],
+  "helpUrl": "docs/name-conventions.md",
+  "rules": {
+    "body-max-line-length": [2, "always", 300],
+    "header-max-length": [2, "always", 300],
+    "scope-case": [2, "always", "lower-case"],
+    "type-enum": [
+      2,
+      "always",
+      ["chore", "ci", "docs", "feat", "fix", "refactor", "revert", "style"]
+    ]
+  }
+}

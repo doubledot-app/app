@@ -1,14 +1,48 @@
-import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
-import react from '@vitejs/plugin-react-swc';
-import { defineConfig } from 'vite';
+import type {PluginOption} from 'vite';
+
+import {reactRouter} from '@react-router/dev/vite';
+import autoprefixer from 'autoprefixer';
+import {visualizer} from 'rollup-plugin-visualizer';
+import {defineConfig} from 'vite';
+import checker from 'vite-plugin-checker';
+import {compression} from 'vite-plugin-compression2';
+import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [TanStackRouterVite(), react(), tsconfigPaths()],
-  publicDir: './public',
-  server: {
-    host: true,
-    open: true
-  }
+import tailwindcss from 'tailwindcss';
+
+export default defineConfig(({mode}) => {
+  const isProduction = mode === 'production';
+
+  return {
+    server: {
+      open: true,
+      host: true
+    },
+    build: {
+      sourcemap: true
+    },
+    plugins: [
+      svgr(),
+      compression(),
+      reactRouter(),
+      tsconfigPaths(),
+
+      /* ------------------------------- On Develop ------------------------------- */
+      ...(!isProduction
+        ? [
+            checker({typescript: true}),
+            visualizer({
+              filename: './build/stats.html',
+              open: true,
+              brotliSize: true,
+              sourcemap: false,
+              template: 'treemap',
+              title: 'DoubleDot. -> Bundle Stats'
+            })
+          ]
+        : [])
+    ].filter(Boolean) as PluginOption[],
+    css: {postcss: {plugins: [tailwindcss, autoprefixer]}}
+  };
 });

@@ -42,3 +42,5 @@ dev-dist
 vite.config.ts.*
 CHANGELOG.md
 pnpm-lock.yaml
+app/modules/API/Proxy/**/*
+app/modules/API/Graphql/@gen/**/*

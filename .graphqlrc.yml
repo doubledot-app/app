@@ -1,0 +1,2 @@
+schema: 'app/modules/API/Graphql/@gen/schema.graphql'
+documents: 'app/modules/API/Graphql/**/*.graphql'

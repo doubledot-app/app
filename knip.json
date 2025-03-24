@@ -1,0 +1,6 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "project": ["app/**/*.ts", "app/**/*.tsx"],
+  "entry": ["app/root.tsx"],
+  "ignore": ["app/modules/API/Graphql/@gen/index.ts", "app/modules/API/Proxy/index.ts"]
+}

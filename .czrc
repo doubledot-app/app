@@ -1,0 +1,46 @@
+{
+  "defaultBody": "",
+  "defaultIssues": "",
+  "defaultScope": "",
+  "defaultSubject": "",
+  "defaultType": "",
+  "disableScopeLowerCase": false,
+  "disableSubjectLowerCase": false,
+  "maxHeaderWidth": 100,
+  "maxLineWidth": 100,
+  "path": "cz-conventional-changelog",
+  "types": {
+    "chore": {
+      "description": "Changes that do not affect the code's meaning.",
+      "title": "Chores"
+    },
+    "ci": {
+      "description": "Update CI/CD workflows.",
+      "title": "Continuous Integrations"
+    },
+    "docs": {
+      "description": "Add or update documentation.",
+      "title": "Documentation"
+    },
+    "feat": {
+      "description": "Introduce new features.",
+      "title": "Features"
+    },
+    "fix": {
+      "description": "Fix a bug.",
+      "title": "Bug Fixes"
+    },
+    "refactor": {
+      "description": "Refactor code without changing behavior.",
+      "title": "Code Refactoring"
+    },
+    "revert": {
+      "description": "Revert changes.",
+      "title": "Reverts"
+    },
+    "style": {
+      "description": "Refine code style, formatting changes.",
+      "title": "Styling"
+    }
+  }
+}

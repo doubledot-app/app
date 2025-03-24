@@ -1,4 +1,39 @@
 {
-  "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
+  "include": [
+    "**/*",
+    "**/.server/**/*",
+    "**/.client/**/*",
+    ".storybook/**/*",
+    ".react-router/types/**/*"
+  ],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "types": ["node", "vite/client", "google.analytics"],
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "rootDirs": [".", "./.react-router/types"],
+    "baseUrl": ".",
+    "paths": {
+      // Modules
+      "@Home/*": ["app/modules/Home/*"],
+      "@Error/*": ["app/modules/Error/*"],
+
+      // Common
+      "@Router": ["app/router"],
+      "@Utils/*": ["app/utils/*"],
+      "@Hooks/*": ["app/hooks/*"],
+      "@Routes/*": ["app/routes/*"],
+      "@Components/*": ["app/components/*"],
+      "@RouterTypes/*": [".react-router/types/app/+types/*"]
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "verbatimModuleSyntax": false,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true
+  }
 }
