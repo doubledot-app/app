@@ -62,7 +62,6 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-react-swc": "^3.8.0",
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
     "@eslint/compat": "^1.2.7",
@@ -75,6 +74,7 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-legacy": "^6.0.1",
+    "@vitejs/plugin-react-swc": "^3.8.0",
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
     "eslint": "^9.21.0",
@@ -101,5 +101,12 @@
     "vite-plugin-svgr": "^4.3.0",
     "vite-tsconfig-paths": "^5.1.4",
     "workbox-window": "^7.3.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "core-js",
+      "esbuild"
+    ]
   }
 }
