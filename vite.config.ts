@@ -5,6 +5,7 @@ import autoprefixer from 'autoprefixer';
 import {visualizer} from 'rollup-plugin-visualizer';
 import {defineConfig} from 'vite';
 import checker from 'vite-plugin-checker';
+import {cjsInterop} from 'vite-plugin-cjs-interop';
 import {compression} from 'vite-plugin-compression2';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -23,6 +24,9 @@ export default defineConfig(({mode}) => {
       sourcemap: true
     },
     plugins: [
+      cjsInterop({dependencies: ['@telegram-apps/telegram-ui']}),
+
+      /* ------------------------------- On Production ------------------------------- */
       svgr(),
       compression(),
       reactRouter(),

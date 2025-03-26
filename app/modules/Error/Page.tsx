@@ -2,6 +2,7 @@ import type {Route} from '@RouterTypes/root';
 
 import {useBack} from '@Hooks/useBack';
 import {hierarchy} from '@Router';
+import {Button, Placeholder} from '@telegram-apps/telegram-ui';
 import {isRouteErrorResponse} from 'react-router';
 
 function parseError(error: Error | unknown) {
@@ -28,21 +29,23 @@ function parseError(error: Error | unknown) {
 export default function ErrorPage({error}: Route.ErrorBoundaryProps) {
   const back = useBack();
 
-  const {status, message, details, stack} = parseError(error);
+  const {status, message, details} = parseError(error);
 
   return (
-    <main className="container mx-auto flex h-full w-full flex-1 flex-col items-center justify-center p-4">
-      <h1 className="mb-2 text-6xl font-black text-primary/50">{status}</h1>
-      <h2 className="typography-subtitle1">{message}</h2>
-      <p className="typography-body1 mb-4">{details}</p>
-      <button onClick={() => back(hierarchy.home.path)}>
-        {status === 404 ? 'Go Back' : 'Go Back Home'}
-      </button>
-      {stack && (
-        <pre className="mt-4 w-full overflow-x-auto p-4">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <Placeholder
+      header={message}
+      description={details}
+      action={
+        <Button onClick={() => back(hierarchy.home.path)}>
+          {status === 404 ? 'Go Back' : 'Go Back Home'}
+        </Button>
+      }
+    >
+      <img
+        alt="error"
+        style={{display: 'block', width: '144px', height: '144px'}}
+        src={status === 404 ? '/stickers/oops.gif' : '/stickers/error.gif'}
+      />
+    </Placeholder>
   );
 }

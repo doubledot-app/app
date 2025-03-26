@@ -87,7 +87,7 @@ html {
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  direction: rtl;
+  direction: ltr;
 }
 
 img {

@@ -7,14 +7,42 @@
     ".react-router/types/**/*"
   ],
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "types": ["node", "vite/client", "google.analytics"],
-    "target": "ES2022",
-    "module": "ES2022",
+    // "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    // "types": ["node", "vite/client", "google.analytics"],
+    // "target": "ES2022",
+    // "module": "ES2022",
+    // "moduleResolution": "bundler",
+    // "jsx": "react-jsx",
+    // "esModuleInterop": true,
+    // "allowSyntheticDefaultImports": true,
+    // "verbatimModuleSyntax": false,
+    // "noEmit": true,
+    // "resolveJsonModule": true,
+    // "skipLibCheck": true,
+    // "strict": true,
+
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
     "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
     "jsx": "react-jsx",
-    "rootDirs": [".", "./.react-router/types"],
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
     "baseUrl": ".",
+    "rootDirs": [".", "./.react-router/types"],
     "paths": {
       // Modules
       "@Home/*": ["app/modules/Home/*"],
@@ -27,13 +55,6 @@
       "@Routes/*": ["app/routes/*"],
       "@Components/*": ["app/components/*"],
       "@RouterTypes/*": [".react-router/types/app/+types/*"]
-    },
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "verbatimModuleSyntax": false,
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true
+    }
   }
 }

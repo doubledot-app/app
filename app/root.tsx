@@ -2,13 +2,18 @@ import type {Route} from './+types/root';
 
 import {ProgressBar} from '@Components/core/ProgressBar';
 import ErrorPage from '@Error/Page';
+import telegramStylesheet from '@telegram-apps/telegram-ui/dist/styles.css?url';
 import {Links, Meta, Outlet, Scripts, ScrollRestoration} from 'react-router';
 
 import stylesheet from './app.css?url';
+import TwaLayout from './modules/Twa/Layout';
 
 export const ErrorBoundary = ErrorPage;
 
-export const links: Route.LinksFunction = () => [{rel: 'stylesheet', href: stylesheet}];
+export const links: Route.LinksFunction = () => [
+  {rel: 'stylesheet', href: stylesheet},
+  {rel: 'stylesheet', href: telegramStylesheet}
+];
 
 export function meta() {
   return [{title: 'DoubleDot.'}];
@@ -50,7 +55,7 @@ export function Layout({children}: {children: React.ReactNode}) {
         <Links />
       </head>
       <body className="text-secondary-foreground">
-        {children}
+        <TwaLayout>{children}</TwaLayout>
         <ProgressBar />
         <ScrollRestoration />
         <Scripts />
