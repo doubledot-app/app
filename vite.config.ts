@@ -25,7 +25,7 @@ export default defineConfig(({mode}) => {
       sourcemap: true
     },
     ssr: {
-      noExternal: ['rooks']
+      noExternal: ['rooks', 'ua-parser-js']
     },
     plugins: [
       cjsInterop({dependencies: ['@telegram-apps/telegram-ui']}),
