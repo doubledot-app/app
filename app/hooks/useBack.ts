@@ -1,6 +1,8 @@
+import type {To} from 'react-router';
+
 import {hierarchy} from '@Router';
 import {useCallback} from 'react';
-import {To, useNavigate, useNavigationType} from 'react-router';
+import {useNavigate, useNavigationType} from 'react-router';
 
 export const useBack = () => {
   const navigate = useNavigate();
