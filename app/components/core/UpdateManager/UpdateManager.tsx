@@ -4,6 +4,7 @@ import type {FunctionComponent} from 'react';
 import * as Sentry from '@sentry/react';
 import {onlineManager} from '@tanstack/react-query';
 import {Button, Modal, Placeholder} from '@telegram-apps/telegram-ui';
+import {ModalHeader} from '@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader';
 import {memo, useMemo, useRef, useState} from 'react';
 import {useIntervalWhen} from 'rooks';
 import {registerSW} from 'virtual:pwa-register';
@@ -58,7 +59,7 @@ const UpdateManagerComponent: FunctionComponent = () => {
   );
 
   return (
-    <Modal open={open}>
+    <Modal open={open} header={<ModalHeader />}>
       <Placeholder
         header={'A new version of DoubleDot. is available!'}
         description={
