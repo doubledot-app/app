@@ -10,7 +10,7 @@ export function usePlatform() {
   const [platform, setPlatform] = useAtom(PlatformAtom);
 
   const updatePlatform = useCallback(async () => {
-    if (platform) return;
+    // if (!import.meta.env.DEV && platform) return;
     if (typeof window === 'undefined') return;
 
     if (WebApp.platform && WebApp.platform !== 'unknown') {
