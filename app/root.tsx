@@ -1,8 +1,10 @@
 import type {Route} from './+types/root';
 
 import {ProgressBar} from '@Components/core/ProgressBar';
+import {UpdateManager} from '@Components/core/UpdateManager';
 import ErrorPage from '@Error/Page';
 import telegramStylesheet from '@telegram-apps/telegram-ui/dist/styles.css?url';
+import {Fragment} from 'react';
 import {Links, Meta, Outlet, Scripts, ScrollRestoration} from 'react-router';
 
 import stylesheet from './app.css?url';
@@ -93,5 +95,10 @@ export function Layout({children}: {children: React.ReactNode}) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <Fragment>
+      <Outlet />
+      <UpdateManager />
+    </Fragment>
+  );
 }

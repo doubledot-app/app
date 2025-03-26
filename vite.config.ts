@@ -24,6 +24,9 @@ export default defineConfig(({mode}) => {
     build: {
       sourcemap: true
     },
+    ssr: {
+      noExternal: ['rooks']
+    },
     plugins: [
       cjsInterop({dependencies: ['@telegram-apps/telegram-ui']}),
 
@@ -36,7 +39,7 @@ export default defineConfig(({mode}) => {
         minify: true,
         srcDir: 'app',
         outDir: 'build/client',
-        registerType: 'autoUpdate',
+        registerType: 'prompt',
         manifestFilename: 'manifest.json',
         manifest: {
           name: 'DoubleDot.',
