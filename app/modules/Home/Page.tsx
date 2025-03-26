@@ -2,7 +2,10 @@ import {Placeholder} from '@telegram-apps/telegram-ui';
 
 export default function HomePage() {
   return (
-    <Placeholder header={'Welcome'} description={'We not ready yet, pls wait.'}>
+    <Placeholder
+      header={'Welcome to DoubleDot.'}
+      description={'We are not ready yet, please wait.'}
+    >
       <img
         alt="error"
         src="/stickers/oops.gif"
