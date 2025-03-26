@@ -35,6 +35,7 @@ export default function ErrorPage({error}: Route.ErrorBoundaryProps) {
     <Placeholder
       header={message}
       description={details}
+      className="h-full w-full"
       action={
         <Button onClick={() => back(hierarchy.home.path)}>
           {status === 404 ? 'Go Back' : 'Go Back Home'}

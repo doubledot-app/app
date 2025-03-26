@@ -9,8 +9,7 @@ export default function TwaProvider(props: PropsWithChildren) {
     <AppRoot
       className="h-full w-full"
       appearance={WebApp.colorScheme}
-      platform="ios"
-      // platform={['macos', 'ios'].includes(WebApp.platform) ? 'ios' : 'base'}
+      platform={['macos', 'ios'].includes(WebApp.platform) ? 'ios' : 'base'}
     >
       {props.children}
       <BackButtonManipulator />

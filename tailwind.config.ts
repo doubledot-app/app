@@ -8,6 +8,9 @@ export default {
   content: ['./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      spacing: {
+        'safe-bottom': 'env(safe-area-inset-bottom)'
+      },
       colors: {
         background: 'var(--tgui--bg_color)',
         'root-background': 'var(--tgui--secondary_bg_color)',
