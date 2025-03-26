@@ -37,7 +37,6 @@ export default defineConfig(({mode}) => {
       tsconfigPaths(),
       VitePWA({
         minify: true,
-        srcDir: 'app',
         outDir: 'build/client',
         registerType: 'prompt',
         manifestFilename: 'manifest.json',
