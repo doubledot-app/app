@@ -1,0 +1,11 @@
+{
+  "name": "DoubleDot.",
+  "short_name": "DoubleDot.",
+  "start_url": "/",
+  "display": "standalone",
+  "lang": "en-US",
+  "scope": "/",
+  "dir": "ltr",
+  "orientation": "portrait",
+  "theme_color": "#FFFFFF"
+}

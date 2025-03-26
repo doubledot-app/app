@@ -7,6 +7,7 @@ import {defineConfig} from 'vite';
 import checker from 'vite-plugin-checker';
 import {cjsInterop} from 'vite-plugin-cjs-interop';
 import {compression} from 'vite-plugin-compression2';
+import {VitePWA} from 'vite-plugin-pwa';
 import svgr from 'vite-plugin-svgr';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
@@ -31,6 +32,24 @@ export default defineConfig(({mode}) => {
       compression(),
       reactRouter(),
       tsconfigPaths(),
+      VitePWA({
+        minify: true,
+        srcDir: 'app',
+        outDir: 'build/client',
+        registerType: 'prompt',
+        manifestFilename: 'manifest.json',
+        manifest: {
+          name: 'DoubleDot.',
+          short_name: 'DoubleDot.',
+          start_url: '/',
+          display: 'standalone',
+          lang: 'en-US',
+          scope: '/',
+          dir: 'ltr',
+          orientation: 'portrait',
+          theme_color: '#FFFFFF'
+        }
+      }),
 
       /* ------------------------------- On Develop ------------------------------- */
       ...(!isProduction
