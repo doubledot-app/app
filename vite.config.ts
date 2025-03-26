@@ -36,7 +36,7 @@ export default defineConfig(({mode}) => {
         minify: true,
         srcDir: 'app',
         outDir: 'build/client',
-        registerType: 'prompt',
+        registerType: 'autoUpdate',
         manifestFilename: 'manifest.json',
         manifest: {
           name: 'DoubleDot.',
