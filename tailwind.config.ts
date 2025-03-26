@@ -9,64 +9,63 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: 'hsl(var(--background))',
-        'root-background': 'hsl(var(--root-background))',
-        foreground: 'hsl(var(--foreground))',
+        background: 'var(--tgui--bg_color)',
+        'root-background': 'var(--tgui--secondary_bg_color)',
+        foreground: 'var(--tgui--text_color)',
         card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))'
+          DEFAULT: 'var(--tgui--card_bg_color)',
+          foreground: 'var(--tgui--text_color)'
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))'
+          DEFAULT: 'var(--tgui--section_bg_color)',
+          foreground: 'var(--tgui--text_color)'
         },
         primary: {
-          DEFAULT: 'hsl(var(--primary) / <alpha-value>)',
-          foreground: 'hsl(var(--primary-foreground))'
+          DEFAULT: 'var(--tgui--button_color)',
+          foreground: 'var(--tgui--button_text_color)'
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
-          foreground: 'hsl(var(--secondary-foreground))'
+          DEFAULT: 'var(--tgui--secondary_fill)',
+          foreground: 'var(--tgui--text_color)'
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))'
+          DEFAULT: 'var(--tgui--hint_color)',
+          foreground: 'var(--tgui--secondary_hint_color)'
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground) / <alpha-value>)'
+          DEFAULT: 'var(--tgui--accent_text_color)',
+          foreground: 'var(--tgui--text_color)'
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
-
-          foreground: 'hsl(var(--destructive-foreground))'
+          DEFAULT: 'var(--tgui--destructive_background)',
+          foreground: 'var(--tgui--destructive_text_color)'
         },
         confirm: {
-          DEFAULT: 'hsl(var(--confirm))',
-          foreground: 'hsl(var(--confirm-foreground))'
+          DEFAULT: 'var(--tgui--green)',
+          foreground: 'var(--tgui--white)'
         },
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
+        border: 'var(--tgui--divider)',
+        input: 'var(--tgui--outline)',
         ring: {
-          '80': 'hsl(var(--ring-80))',
-          '90': 'hsl(var(--ring-90))',
-          DEFAULT: 'hsl(var(--ring))'
+          '80': 'var(--tgui--primary_code_highlight)',
+          '90': 'var(--tgui--secondary_code_highlight)',
+          DEFAULT: 'var(--tgui--tertiary_code_highlight)'
         },
         gray: {
-          '100': 'hsl(var(--gray-100))',
-          '200': 'hsl(var(--gray-200))',
-          '300': 'hsl(var(--gray-300))',
-          '400': 'hsl(var(--gray-400))',
-          '500': 'hsl(var(--gray-500))',
-          '600': 'hsl(var(--gray-600))',
-          DEFAULT: 'hsl(var(--gray))'
+          '100': 'var(--tgui--tertiary_bg_color)',
+          '200': 'var(--tgui--quartenary_bg_color)',
+          '300': 'var(--tgui--secondary_hint_color)',
+          '400': 'var(--tgui--hint_color)',
+          '500': 'var(--tgui--subtitle_text_color)',
+          '600': 'var(--tgui--text_color)',
+          DEFAULT: 'var(--tgui--black)'
         },
         chart: {
-          '1': 'hsl(var(--chart-1))',
-          '2': 'hsl(var(--chart-2))',
-          '3': 'hsl(var(--chart-3))',
-          '4': 'hsl(var(--chart-4))',
-          '5': 'hsl(var(--chart-5))'
+          '1': 'var(--tgui--primary_code_highlight)',
+          '2': 'var(--tgui--secondary_code_highlight)',
+          '3': 'var(--tgui--tertiary_code_highlight)',
+          '4': 'var(--tgui--toast_accent_color)',
+          '5': 'var(--tgui--surface_dark)'
         }
       }
     }
