@@ -76,9 +76,9 @@ export function Layout({children}: {children: React.ReactNode}) {
         <link href="/manifest.json" rel="manifest" />
 
         {/* <!-- Icons  --> */}
-        <link rel="icon" href="/favicon.ico" />
-        {/* <link rel="mask-icon" href="/icon.png" color="#FFFFFF" /> */}
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link rel="icon" href="/icons/favicon.ico" />
+        {/* <link rel="mask-icon" href="/icons/icon.png" color="#FFFFFF" /> */}
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180" />
         {/* <link rel="apple-touch-icon" href="/icons/icon-512x512.png" sizes="512x512" /> */}
 
         <Meta />

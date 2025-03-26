@@ -41,6 +41,11 @@ export default defineConfig(({mode}) => {
         outDir: 'build/client',
         registerType: 'prompt',
         manifestFilename: 'manifest.json',
+        workbox: {
+          navigateFallback: null,
+          globIgnores: ['**/*.js.map'],
+          globPatterns: ['**/*.{js,css,ico,png,svg,woff,woff2,json,webp}']
+        },
         manifest: {
           name: 'DoubleDot.',
           short_name: 'DoubleDot.',
@@ -53,12 +58,12 @@ export default defineConfig(({mode}) => {
           theme_color: '#FFFFFF',
           icons: [
             {
-              src: '/android-chrome-192x192.png',
+              src: '/icons/android-chrome-192x192.png',
               sizes: '192x192',
               type: 'image/png'
             },
             {
-              src: '/android-chrome-512x512.png',
+              src: '/icons/android-chrome-512x512.png',
               sizes: '512x512',
               type: 'image/png'
             }

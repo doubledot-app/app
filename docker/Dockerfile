@@ -35,8 +35,8 @@ COPY docker/nginx-default.conf /etc/nginx/conf.d/default.conf
 # Copy built files from previous stage
 COPY --from=build /app/build/client /usr/share/nginx/html
 
-# Expose port 80
-EXPOSE 80
+# Expose port 3000
+EXPOSE 3000
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
