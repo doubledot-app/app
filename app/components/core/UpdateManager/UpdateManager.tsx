@@ -64,7 +64,16 @@ const UpdateManagerComponent: FunctionComponent = () => {
         description={
           'If the update is not performed, the new changes may not be displayed until you reload the page.'
         }
-        action={<Button onClick={() => updateSW?.(true)}>{'Update now!'}</Button>}
+        action={
+          <Button
+            onClick={() => {
+              setOpen(false);
+              updateSW?.(true);
+            }}
+          >
+            {'Update now!'}
+          </Button>
+        }
       />
     </Modal>
   );
