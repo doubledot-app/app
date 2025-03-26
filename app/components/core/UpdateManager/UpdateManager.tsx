@@ -60,7 +60,7 @@ const UpdateManagerComponent: FunctionComponent = () => {
   return (
     <Modal open={open}>
       <Placeholder
-        header={'A new version of HamrahTel is available!'}
+        header={'A new version of DoubleDot. is available!'}
         description={
           'If the update is not performed, the new changes may not be displayed until you reload the page.'
         }

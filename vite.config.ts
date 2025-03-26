@@ -44,7 +44,7 @@ export default defineConfig(({mode}) => {
         workbox: {
           navigateFallback: null,
           globIgnores: ['**/*.js.map'],
-          globPatterns: ['**/*.{js,css,ico,png,svg,woff,woff2,json,webp}']
+          globPatterns: ['**/*.{js,css,ico,gif,png,svg,woff,woff2,json,webp}']
         },
         manifest: {
           name: 'DoubleDot.',
