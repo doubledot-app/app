@@ -1,3 +1,4 @@
+import {hierarchy} from '@Router';
 import {Tabbar} from '@telegram-apps/telegram-ui';
 import {Bell, House, Search, User} from 'lucide-react';
 import {memo, useMemo} from 'react';
@@ -10,24 +11,24 @@ const BottomNavigationComponent = () => {
   const tabs = useMemo(
     () => [
       {
-        path: '/',
+        Icon: House,
         text: 'Home',
-        Icon: House
+        path: hierarchy.home.path
       },
       {
-        path: '/search',
+        Icon: Search,
         text: 'Search',
-        Icon: Search
+        path: hierarchy.search.path
       },
       {
-        path: '/activity',
+        Icon: Bell,
         text: 'Activity',
-        Icon: Bell
+        path: hierarchy.activity.path
       },
       {
-        path: '/profile',
+        Icon: User,
         text: 'Profile',
-        Icon: User
+        path: hierarchy.profile.path
       }
     ],
     []

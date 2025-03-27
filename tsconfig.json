@@ -13,6 +13,9 @@
       // Modules
       "@Home/*": ["app/modules/Home/*"],
       "@Error/*": ["app/modules/Error/*"],
+      "@Search/*": ["app/modules/Search/*"],
+      "@Profile/*": ["app/modules/Profile/*"],
+      "@Activity/*": ["app/modules/Activity/*"],
 
       // Common
       "@Router": ["app/router"],
