@@ -10,8 +10,10 @@ export default function TwaProvider(props: PropsWithChildren) {
   const platform = usePlatform();
 
   useEffect(() => {
-    WebApp.requestFullscreen();
-  }, []);
+    if (['ios', 'android'].includes(platform)) {
+      WebApp.requestFullscreen();
+    }
+  }, [platform]);
 
   return (
     <AppRoot
