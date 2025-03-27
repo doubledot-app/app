@@ -9,7 +9,7 @@ export default function HomePage() {
     >
       <img
         alt="error"
-        src="/stickers/oops.gif"
+        src="/stickers/power.gif"
         style={{display: 'block', width: '144px', height: '144px'}}
       />
     </Placeholder>

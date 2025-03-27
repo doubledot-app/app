@@ -6,6 +6,12 @@ export default function HomePage() {
       className="h-full"
       header={'Activity'}
       description={'We are not ready yet, please wait.'}
-    />
+    >
+      <img
+        alt="error"
+        src="/stickers/activity.gif"
+        style={{display: 'block', width: '144px', height: '144px'}}
+      />
+    </Placeholder>
   );
 }
