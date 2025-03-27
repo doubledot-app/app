@@ -4,9 +4,14 @@ import {BackButtonManipulator} from '@Components/core/BackButtonManipulator/Back
 import {usePlatform} from '@Hooks/usePlatform';
 import {AppRoot} from '@telegram-apps/telegram-ui';
 import WebApp from '@twa-dev/sdk';
+import {useEffect} from 'react';
 
 export default function TwaProvider(props: PropsWithChildren) {
   const platform = usePlatform();
+
+  useEffect(() => {
+    WebApp.requestFullscreen();
+  }, []);
 
   return (
     <AppRoot
